@@ -70,13 +70,15 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
 
   return (
     <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 via-black to-neutral-950 p-4 text-neutral-50 shadow-2xl sm:p-6">
-      <header className="flex flex-col gap-2">
+      <header className="flex flex-col gap-2 text-center sm:text-left">
         <p className="text-[0.6rem] uppercase tracking-[0.4em] text-neutral-400 sm:text-xs">Mood Picker</p>
-        <div className="flex items-center gap-2 text-xl font-semibold sm:text-2xl">
+        <div className="flex items-center justify-center gap-2 text-xl font-semibold sm:justify-start sm:text-2xl">
           <Sparkles className="h-5 w-5 text-accent" />
           <span>What&rsquo;s your mood today?</span>
         </div>
-        <p className="text-sm text-neutral-400 sm:text-base">Describe your vibe and let AI craft a tailored narrative plus matching films.</p>
+        <p className="text-sm text-neutral-400 sm:text-base">
+          Describe your vibe and let AI craft a tailored narrative plus matching films.
+        </p>
       </header>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-4">
@@ -124,16 +126,30 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
         </p>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {isPending && activeMovies.length === 0 ? (
-          <div className="col-span-full flex items-center gap-2 text-sm text-neutral-400">
+      <div className="mt-6 space-y-4">
+        {isPending && activeMovies.length === 0 && (
+          <div className="flex items-center justify-center gap-2 text-sm text-neutral-400">
             <Loader2 className="h-4 w-4 animate-spin" />
             Gathering fresh titles...
           </div>
-        ) : activeMovies.length > 0 ? (
-          activeMovies.map((movie) => <MovieCard key={`mood-${movie.id}`} movie={movie} />)
+        )}
+        {activeMovies.length > 0 ? (
+          <>
+            <div className="scrollbar-hide flex gap-4 overflow-x-auto pb-2 sm:hidden snap-x snap-mandatory">
+              {activeMovies.map((movie) => (
+                <div key={`mood-mobile-${movie.id}`} className="w-[70%] min-w-[200px] snap-center">
+                  <MovieCard movie={movie} />
+                </div>
+              ))}
+            </div>
+            <div className="hidden grid-cols-1 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+              {activeMovies.map((movie) => (
+                <MovieCard key={`mood-${movie.id}`} movie={movie} />
+              ))}
+            </div>
+          </>
         ) : (
-          <p className="text-neutral-500">Your recommendations will appear here.</p>
+          <p className="text-center text-neutral-500 sm:text-left">Your recommendations will appear here.</p>
         )}
       </div>
     </section>

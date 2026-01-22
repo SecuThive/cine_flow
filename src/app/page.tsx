@@ -64,12 +64,14 @@ export default async function HomePage() {
             <p className="text-xs uppercase tracking-[0.4em] text-neutral-400">Browse Library</p>
             <h2 className="text-2xl font-semibold">Spotlight Collections</h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 justify-items-center sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-3 xl:grid-cols-4">
             {browseGrid.length === 0 && (
               <p className="text-neutral-500">Add a TMDB API key to see curated picks.</p>
             )}
             {browseGrid.map((movie) => (
-              <MovieCard key={`grid-${movie.id}`} movie={movie} />
+              <div key={`grid-${movie.id}`} className="w-full max-w-[220px] sm:max-w-none">
+                <MovieCard movie={movie} />
+              </div>
             ))}
           </div>
         </section>
