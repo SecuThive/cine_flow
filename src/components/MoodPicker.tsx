@@ -17,10 +17,10 @@ interface MoodRecommendation {
 }
 
 const presetMoods = [
-  { label: "우울해요", value: "우울해" },
-  { label: "스릴 찾고 싶어요", value: "스릴이 필요해" },
-  { label: "설레는 기분", value: "설레는 로맨스" },
-  { label: "집중하고 싶어요", value: "몰입감 있는 영화" },
+  { label: "Need a pick-me-up", value: "I feel low and need a feel-good comedy" },
+  { label: "Crave adrenaline", value: "I want an intense thriller tonight" },
+  { label: "Date-night vibes", value: "In the mood for a romantic story" },
+  { label: "Mind needs focus", value: "I want an immersive mystery" },
 ];
 
 export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
@@ -39,7 +39,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!inputMood.trim()) {
-      setError("기분을 입력해 주세요.");
+      setError("Please tell us how you're feeling.");
       return;
     }
     requestMood(inputMood.trim());
@@ -63,7 +63,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
         setRecommendation(data);
       } catch (err) {
         console.error(err);
-        setError("AI 추천을 불러오는 데 실패했어요. 잠시 후 다시 시도해 주세요.");
+        setError("We couldn't fetch an AI recommendation. Please try again shortly.");
       }
     });
   };
@@ -74,9 +74,9 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
         <p className="text-xs uppercase tracking-[0.4em] text-neutral-400">Mood Picker</p>
         <div className="flex items-center gap-2 text-2xl font-semibold">
           <Sparkles className="h-5 w-5 text-accent" />
-          <span>오늘 기분이 어때?</span>
+          <span>What&rsquo;s your mood today?</span>
         </div>
-        <p className="text-sm text-neutral-400">기분을 입력하면 AI가 분위기에 맞는 큐레이션과 영화를 추천해요.</p>
+        <p className="text-sm text-neutral-400">Describe your vibe and let AI craft a tailored narrative plus matching films.</p>
       </header>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-4">
@@ -85,7 +85,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
           <input
             value={inputMood}
             onChange={(event) => setInputMood(event.target.value)}
-            placeholder="예: 우울해, 설레는 영화 보고 싶어"
+            placeholder="e.g. Feeling drained, want something uplifting"
             className="flex-1 rounded-2xl border border-white/15 bg-neutral-900/60 px-4 py-3 text-sm text-neutral-100 outline-none transition focus:border-accent"
           />
           <button
@@ -93,7 +93,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
             className="rounded-2xl bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-accent/30 transition hover:bg-accent/90"
             disabled={isPending}
           >
-            {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "추천 받기"}
+            {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Get recommendations"}
           </button>
         </div>
       </form>
@@ -116,11 +116,11 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
       <div className="mt-6 space-y-3">
         <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">AI Highlight</p>
         <p className="text-lg font-semibold text-neutral-100">
-          {recommendation?.profile?.title ?? "감성 맞춤 추천 대기 중"}
+          {recommendation?.profile?.title ?? "Waiting for a mood"}
         </p>
         <p className="text-sm text-neutral-400">
           {recommendation?.narrative ??
-            "기본 추천을 먼저 보여드릴게요. 기분을 입력하면 맞춤형 문장과 영화를 큐레이션해 드려요."}
+            "Preview picks are below. Tell us your mood to unlock AI-curated copy and selections."}
         </p>
       </div>
 
@@ -128,12 +128,12 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
         {isPending && activeMovies.length === 0 ? (
           <div className="col-span-full flex items-center gap-2 text-sm text-neutral-400">
             <Loader2 className="h-4 w-4 animate-spin" />
-            결과를 불러오는 중...
+            Gathering fresh titles...
           </div>
         ) : activeMovies.length > 0 ? (
           activeMovies.map((movie) => <MovieCard key={`mood-${movie.id}`} movie={movie} />)
         ) : (
-          <p className="text-neutral-500">추천을 불러오면 영화가 여기에 나타나요.</p>
+          <p className="text-neutral-500">Your recommendations will appear here.</p>
         )}
       </div>
     </section>

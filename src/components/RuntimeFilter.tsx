@@ -39,7 +39,7 @@ export function RuntimeFilter({ defaultMovies, shortRuntimeSeed, maxMinutes = 12
         setMovies(data.movies ?? shortRuntimeSeed);
       } catch (err) {
         console.error(err);
-        setError("런타임 조건을 적용하지 못했어요. 기본 목록을 보여드릴게요.");
+        setError("We couldn't apply the runtime filter. Showing the base list instead.");
         setMovies(shortRuntimeSeed);
       }
     });
@@ -52,12 +52,12 @@ export function RuntimeFilter({ defaultMovies, shortRuntimeSeed, maxMinutes = 12
           <p className="text-xs uppercase tracking-[0.4em] text-neutral-400">Runtime Filter</p>
           <div className="mt-1 flex items-center gap-2 text-xl font-semibold">
             <TimerReset className="h-5 w-5 text-accent" />
-            <span>2시간 이내 영화</span>
+            <span>Movies Under 2 Hours</span>
           </div>
-          <p className="text-sm text-neutral-400">자기 전 가볍게 볼 짧은 러닝타임 작품만 모았어요.</p>
+          <p className="text-sm text-neutral-400">Perfect for late-night sessions when you want something short and punchy.</p>
         </div>
         <div className="shrink-0 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-xs uppercase tracking-wide text-neutral-300">
-          {maxMinutes}분 이하
+          ≤ {maxMinutes} min
         </div>
       </header>
 
@@ -88,11 +88,11 @@ export function RuntimeFilter({ defaultMovies, shortRuntimeSeed, maxMinutes = 12
         {isPending && (
           <div className="flex items-center gap-2 text-sm text-neutral-400">
             <Loader2 className="h-4 w-4 animate-spin" />
-            러닝타임 필터 적용 중...
+            Applying runtime filter...
           </div>
         )}
         {movies.length === 0 ? (
-          <p className="text-neutral-500">조건에 맞는 영화가 없습니다.</p>
+          <p className="text-neutral-500">No films match this runtime right now.</p>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2">
             {movies.slice(0, 6).map((movie) => (

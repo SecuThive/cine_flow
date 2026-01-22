@@ -83,48 +83,48 @@ interface MoodProfile {
 const moodProfiles: Record<MoodKey, MoodProfile> = {
   comfort: {
     key: "comfort",
-    title: "기분 좋아지는 코미디",
-    tone: "부드러운 유머와 휴머니즘",
+    title: "Feel-Good Comedy",
+    tone: "Gentle humor and cuddle-core optimism",
     genres: "35,10751",
     sortBy: "vote_average.desc",
     voteAverageGte: 6,
   },
   adrenaline: {
     key: "adrenaline",
-    title: "심장 박동을 올리는 스릴",
-    tone: "아드레날린 가득한 체이싱",
+    title: "Pulse-Raising Thrillers",
+    tone: "High-adrenaline chases and suspense",
     genres: "28,53",
     sortBy: "popularity.desc",
   },
   romance: {
     key: "romance",
-    title: "설레는 로맨스",
-    tone: "감성 충만한 러브 스토리",
+    title: "Heartflutter Romance",
+    tone: "Emotion-packed love stories",
     genres: "10749,18",
     sortBy: "vote_average.desc",
   },
   curious: {
     key: "curious",
-    title: "몰입감 있는 미스터리",
-    tone: "생각을 자극하는 시네마",
+    title: "Immersive Mysteries",
+    tone: "Mind-twisting cinema",
     genres: "9648,18",
     sortBy: "popularity.desc",
   },
   uplift: {
     key: "uplift",
-    title: "영감을 주는 여정",
-    tone: "따뜻한 성장담과 휴먼 드라마",
+    title: "Uplifting Journeys",
+    tone: "Warm, human-centered storytelling",
     genres: "18,16",
     sortBy: "vote_average.desc",
   },
 };
 
 const moodKeywordMap: Record<MoodKey, string[]> = {
-  comfort: ["sad", "blue", "우울", "침체", "down"],
-  adrenaline: ["thrill", "지루", "스릴", "액션", "짜릿"],
-  romance: ["love", "설레", "romance", "데이트"],
-  curious: ["mystery", "집중", "호기심", "몰입", "생각"],
-  uplift: ["영감", "inspire", "성장", "motivated", "healing"],
+  comfort: ["sad", "blue", "low", "comfort", "우울", "침체", "down"],
+  adrenaline: ["thrill", "bored", "adrenaline", "action", "지루", "스릴", "액션", "짜릿"],
+  romance: ["love", "romance", "date", "설레", "데이트"],
+  curious: ["mystery", "focus", "curious", "집중", "호기심", "몰입", "생각"],
+  uplift: ["inspire", "growth", "healing", "hope", "영감", "성장", "motivated"],
 };
 
 function resolveMoodKey(rawMood: string): MoodProfile {

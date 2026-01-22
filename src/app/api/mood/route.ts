@@ -13,7 +13,7 @@ interface MoodResponse {
 }
 
 async function buildNarrative(mood: string, profile: MoodProfile, titles: string[]): Promise<string> {
-  const fallback = `"${profile.title}" 무드에 어울리는 작품으로 ${titles.slice(0, 3).join(", ")} 등을 추천드려요.`;
+  const fallback = `Here are some "${profile.title}" picks like ${titles.slice(0, 3).join(", " )} to match your vibe.`;
 
   if (!AI_ENDPOINT || !AI_API_KEY) {
     return fallback;
