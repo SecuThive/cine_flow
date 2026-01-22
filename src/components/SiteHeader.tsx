@@ -99,8 +99,8 @@ export function SiteHeader({ spotlight }: SiteHeaderProps) {
       </div>
 
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur">
-          <div className="ml-auto flex h-full w-11/12 max-w-sm flex-col border-l border-white/10 bg-neutral-950 p-6 text-neutral-50">
+        <div className="fixed inset-0 z-50 bg-neutral-950/95 backdrop-blur-sm">
+          <div className="ml-auto flex h-full w-full max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-neutral-950 p-6 text-neutral-50 sm:w-11/12">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">Navigation</p>
