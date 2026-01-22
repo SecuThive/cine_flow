@@ -30,13 +30,13 @@ export default async function HomePage() {
   return (
     <main className="space-y-12 pb-16">
       <SiteHeader spotlight={headerSpotlight} />
-      <div className="px-4 pt-6 md:px-10 lg:px-16">
-      <HeroSection movie={heroMovie} />
+      <div className="space-y-12 px-4 pt-6 md:px-10 lg:px-16">
+        <HeroSection movie={heroMovie} />
 
-      <section id="mood" className="grid gap-6 lg:grid-cols-[1.6fr_minmax(0,1fr)]">
+        <section id="mood" className="grid gap-6 lg:grid-cols-[1.6fr_minmax(0,1fr)]">
           <MoodPicker initialSpotlight={moodSeed} />
           <RuntimeFilter defaultMovies={runtimeDefault} shortRuntimeSeed={shortRuntimeMovies} maxMinutes={120} />
-      </section>
+        </section>
 
         <SearchPanel initialShowcase={browseGrid} />
 

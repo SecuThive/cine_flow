@@ -20,17 +20,16 @@ const footerNav: { title: string; links: FooterLink[] }[] = [
   {
     title: "Company",
     links: [
-      { label: "About", href: "/" as Route },
-      { label: "Press", href: "/" as Route },
-      { label: "Creators", href: "/" as Route },
+      { label: "About", href: "/about" as Route },
+      { label: "Contact", href: "/contact" as Route },
     ],
   },
   {
     title: "Policy",
     links: [
-      { label: "Privacy", href: "/" as Route },
-      { label: "Terms", href: "/" as Route },
-      { label: "Ad Disclosure", href: "/" as Route },
+      { label: "Privacy", href: "/privacy" as Route },
+      { label: "Terms", href: "/terms" as Route },
+      { label: "Ad Disclosure", href: "/ad-disclosure" as Route },
     ],
   },
 ];
@@ -78,7 +77,7 @@ export function Footer() {
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-neutral-500 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} CineScout. All rights reserved.</p>
           <p>
-            Contact: <a href="mailto:support@cinescout.app" className="text-white">support@cinescout.app</a> · Last update {new Date().toLocaleDateString("en-US")}
+            Contact: <a href="mailto:thive8564@gmail.com" className="text-white">thive8564@gmail.com</a> · Last update {new Date().toLocaleDateString("en-US")}
           </p>
         </div>
       </div>
