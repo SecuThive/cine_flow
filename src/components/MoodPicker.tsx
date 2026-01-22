@@ -69,18 +69,18 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
   };
 
   return (
-    <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 via-black to-neutral-950 p-6 text-neutral-50 shadow-2xl">
+    <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 via-black to-neutral-950 p-4 text-neutral-50 shadow-2xl sm:p-6">
       <header className="flex flex-col gap-2">
-        <p className="text-xs uppercase tracking-[0.4em] text-neutral-400">Mood Picker</p>
-        <div className="flex items-center gap-2 text-2xl font-semibold">
+        <p className="text-[0.6rem] uppercase tracking-[0.4em] text-neutral-400 sm:text-xs">Mood Picker</p>
+        <div className="flex items-center gap-2 text-xl font-semibold sm:text-2xl">
           <Sparkles className="h-5 w-5 text-accent" />
           <span>What&rsquo;s your mood today?</span>
         </div>
-        <p className="text-sm text-neutral-400">Describe your vibe and let AI craft a tailored narrative plus matching films.</p>
+        <p className="text-sm text-neutral-400 sm:text-base">Describe your vibe and let AI craft a tailored narrative plus matching films.</p>
       </header>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-4">
-        <label className="block text-xs uppercase tracking-[0.3em] text-neutral-500">Mood</label>
+        <label className="block text-[0.65rem] uppercase tracking-[0.3em] text-neutral-500 sm:text-xs">Mood</label>
         <div className="flex flex-col gap-3 sm:flex-row">
           <input
             value={inputMood}
@@ -90,7 +90,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
           />
           <button
             type="submit"
-            className="rounded-2xl bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-accent/30 transition hover:bg-accent/90"
+            className="w-full rounded-2xl bg-accent px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-accent/30 transition hover:bg-accent/90 sm:w-auto"
             disabled={isPending}
           >
             {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Get recommendations"}
@@ -98,13 +98,13 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
         </div>
       </form>
 
-      <div className="mt-4 flex flex-wrap gap-3">
+      <div className="mt-4 flex flex-wrap gap-2">
         {presetMoods.map((preset) => (
           <button
             key={preset.value}
             type="button"
             onClick={() => handlePreset(preset.value)}
-            className="rounded-full border border-white/10 px-4 py-2 text-xs uppercase tracking-wide text-neutral-200 transition hover:border-accent/60 hover:text-white"
+            className="rounded-full border border-white/10 px-3 py-2 text-[0.6rem] uppercase tracking-wide text-neutral-200 transition hover:border-accent/60 hover:text-white sm:px-4 sm:text-xs"
           >
             {preset.label}
           </button>
@@ -124,7 +124,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {isPending && activeMovies.length === 0 ? (
           <div className="col-span-full flex items-center gap-2 text-sm text-neutral-400">
             <Loader2 className="h-4 w-4 animate-spin" />
