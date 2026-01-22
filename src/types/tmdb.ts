@@ -11,6 +11,56 @@ export interface Movie {
   genre_ids?: number[];
 }
 
+export interface TmdbGenre {
+  id: number;
+  name: string;
+}
+
+export interface TmdbSpokenLanguage {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+}
+
+export interface TmdbProductionCountry {
+  iso_3166_1: string;
+  name: string;
+}
+
+export interface TmdbVideoResult {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+  official: boolean;
+  published_at: string;
+}
+
+export interface MovieCreditsCastMember {
+  id: number;
+  name: string;
+  character: string;
+  order: number;
+  profile_path: string | null;
+}
+
+export interface MovieCredits {
+  cast: MovieCreditsCastMember[];
+}
+
+export interface MovieDetails extends Movie {
+  runtime: number | null;
+  tagline: string;
+  genres: TmdbGenre[];
+  status: string;
+  homepage: string | null;
+  spoken_languages: TmdbSpokenLanguage[];
+  production_countries: TmdbProductionCountry[];
+  credits?: MovieCredits;
+  videos?: { results: TmdbVideoResult[] };
+}
+
 export interface TmdbListResponse<T> {
   page: number;
   results: T[];

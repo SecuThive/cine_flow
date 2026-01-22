@@ -1,4 +1,4 @@
-import { Movie, TmdbImageSize, TmdbListResponse } from "@/types/tmdb";
+import { Movie, MovieDetails, TmdbImageSize, TmdbListResponse } from "@/types/tmdb";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
@@ -10,12 +10,7 @@ const TMDB_API_KEY = process.env.TMDB_API_KEY;
 async function fetchFromTmdb<T>(endpoint: string, searchParams?: Record<string, string | number>): Promise<T> {
   if (!TMDB_API_KEY) {
     console.warn("TMDB_API_KEY is not set. Returning empty data set.");
-    return Promise.resolve({
-      page: 1,
-      results: [],
-      total_pages: 0,
-      total_results: 0,
-    } as T);
+    return Promise.resolve({} as T);
   }
 
   const url = new URL(`${API_BASE_URL}${endpoint}`);
@@ -66,6 +61,18 @@ export async function getMoviesByRuntime(maxMinutes: number, limit = 12): Promis
     },
     limit
   );
+}
+
+export async function getMovieDetails(id: number): Promise<MovieDetails | null> {
+  try {
+    const data = await fetchFromTmdb<MovieDetails>(`/movie/${id}`, {
+      append_to_response: "credits,videos",
+    });
+    return data ?? null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 type MoodKey = "comfort" | "adrenaline" | "romance" | "curious" | "uplift";
