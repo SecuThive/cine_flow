@@ -164,6 +164,23 @@ export async function getMoodCuratedMovies(mood: string, limit = 8) {
   return { profile, movies };
 }
 
+export async function searchMovies(query: string, limit = 12): Promise<Movie[]> {
+  if (!query.trim()) {
+    return [];
+  }
+
+  try {
+    const data = await fetchFromTmdb<TmdbListResponse<Movie>>("/search/movie", {
+      query,
+      include_adult: "false",
+    });
+    return (data.results ?? []).slice(0, limit);
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
 export function getPosterUrl(path: string | null, size: TmdbImageSize = DEFAULT_POSTER_SIZE): string | null {
   if (!path) {
     return null;

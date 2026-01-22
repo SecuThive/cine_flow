@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { MoodPicker } from "@/components/MoodPicker";
 import { MovieCard } from "@/components/MovieCard";
 import { RuntimeFilter } from "@/components/RuntimeFilter";
+import { SearchPanel } from "@/components/SearchPanel";
 import { getMovies, getMoviesByRuntime } from "@/lib/tmdb";
 
 const rails: { title: string; category: "popular" | "top_rated" | "upcoming" }[] = [
@@ -31,6 +32,8 @@ export default async function HomePage() {
         <MoodPicker initialSpotlight={moodSeed} />
         <RuntimeFilter defaultMovies={runtimeDefault} shortRuntimeSeed={shortRuntimeMovies} maxMinutes={120} />
       </section>
+
+      <SearchPanel initialShowcase={browseGrid} />
 
       {data.map((rail) => (
         <section key={rail.title} className="space-y-4">
