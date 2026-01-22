@@ -94,9 +94,11 @@ export function RuntimeFilter({ defaultMovies, shortRuntimeSeed, maxMinutes = 12
         {movies.length === 0 ? (
           <p className="text-neutral-500">No films match this runtime right now.</p>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="scrollbar-hide flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible">
             {movies.slice(0, 6).map((movie) => (
-              <MovieCard key={`runtime-${movie.id}`} movie={movie} />
+              <div key={`runtime-${movie.id}`} className="w-[70%] flex-shrink-0 sm:w-auto sm:flex-shrink">
+                <MovieCard movie={movie} />
+              </div>
             ))}
           </div>
         )}

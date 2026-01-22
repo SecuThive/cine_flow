@@ -48,7 +48,7 @@ export function SearchPanel({ initialShowcase }: SearchPanelProps) {
     : "Featured search picks";
 
   return (
-    <section className="space-y-6 rounded-3xl border border-white/10 bg-black/40 p-6">
+    <section id="search" className="space-y-6 rounded-3xl border border-white/10 bg-black/40 p-6">
       <header className="flex flex-col gap-2 text-neutral-50">
         <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">Search the catalog</p>
         <h2 className="text-2xl font-semibold">Find anything in seconds</h2>
