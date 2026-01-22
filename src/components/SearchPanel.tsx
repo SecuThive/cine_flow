@@ -85,11 +85,9 @@ export function SearchPanel({ initialShowcase }: SearchPanelProps) {
         ) : results.length === 0 ? (
           <p className="text-sm text-neutral-500">Try another keyword or explore trending rails below.</p>
         ) : (
-          <div className="grid grid-cols-1 gap-4 justify-items-center sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-4 justify-items-stretch sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
             {results.map((movie) => (
-              <div key={`search-${movie.id}`} className="w-full max-w-[220px] sm:max-w-none">
-                <MovieCard movie={movie} />
-              </div>
+              <MovieCard key={`search-${movie.id}`} movie={movie} />
             ))}
           </div>
         )}

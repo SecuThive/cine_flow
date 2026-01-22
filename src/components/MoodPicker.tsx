@@ -137,7 +137,7 @@ export function MoodPicker({ initialSpotlight = [] }: MoodPickerProps) {
           <>
             <div className="scrollbar-hide flex gap-4 overflow-x-auto pb-2 sm:hidden snap-x snap-mandatory">
               {activeMovies.map((movie) => (
-                <div key={`mood-mobile-${movie.id}`} className="w-[70%] min-w-[200px] snap-center">
+                <div key={`mood-mobile-${movie.id}`} className="w-full min-w-full snap-center">
                   <MovieCard movie={movie} />
                 </div>
               ))}

@@ -43,7 +43,7 @@ export function MovieCard({ movie }: MovieCardProps) {
 
   return (
     <article
-      className="group relative aspect-[2/3] min-w-[180px] max-w-[220px] snap-start cursor-pointer overflow-hidden rounded-xl bg-neutral-900 shadow-poster transition duration-300 ease-out hover:scale-105"
+      className="group relative aspect-[2/3] w-full min-w-0 snap-start cursor-pointer overflow-hidden rounded-xl bg-neutral-900 shadow-poster transition duration-300 ease-out hover:scale-105 sm:min-w-[180px] sm:max-w-[220px]"
       aria-label={movie.title}
     >
       {posterUrl ? (

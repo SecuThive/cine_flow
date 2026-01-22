@@ -94,11 +94,9 @@ export function RuntimeFilter({ defaultMovies, shortRuntimeSeed, maxMinutes = 12
         {movies.length === 0 ? (
           <p className="text-neutral-500">No films match this runtime right now.</p>
         ) : (
-          <div className="grid grid-cols-1 gap-4 justify-items-center sm:grid-cols-2 sm:justify-items-stretch">
+          <div className="grid grid-cols-1 gap-4 justify-items-stretch sm:grid-cols-2">
             {movies.slice(0, 6).map((movie) => (
-              <div key={`runtime-${movie.id}`} className="w-full max-w-[220px] sm:max-w-none">
-                <MovieCard movie={movie} />
-              </div>
+              <MovieCard key={`runtime-${movie.id}`} movie={movie} />
             ))}
           </div>
         )}
