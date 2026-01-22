@@ -1,7 +1,8 @@
 import { HeroSection } from "@/components/HeroSection";
+import { MoodPicker } from "@/components/MoodPicker";
 import { MovieCard } from "@/components/MovieCard";
-import { getMovies } from "@/lib/tmdb";
-import { Movie } from "@/types/tmdb";
+import { RuntimeFilter } from "@/components/RuntimeFilter";
+import { getMovies, getMoviesByRuntime } from "@/lib/tmdb";
 
 const rails: { title: string; category: "popular" | "top_rated" | "upcoming" }[] = [
   { title: "Trending Now", category: "popular" },
@@ -18,10 +19,18 @@ export default async function HomePage() {
   const data = await fetchRailData();
   const heroMovie = data[0]?.movies[0] ?? data[1]?.movies[0] ?? data[2]?.movies[0];
   const browseGrid = data.flatMap((rail) => rail.movies).slice(0, 12);
+  const shortRuntimeMovies = await getMoviesByRuntime(120, 8);
+  const moodSeed = data[0]?.movies.slice(0, 6) ?? browseGrid.slice(0, 6);
+  const runtimeDefault = data[1]?.movies.slice(0, 8) ?? browseGrid.slice(0, 8);
 
   return (
     <main className="space-y-12 px-4 pb-16 pt-6 md:px-10 lg:px-16">
       <HeroSection movie={heroMovie} />
+
+      <section className="grid gap-6 lg:grid-cols-[1.6fr_minmax(0,1fr)]">
+        <MoodPicker initialSpotlight={moodSeed} />
+        <RuntimeFilter defaultMovies={runtimeDefault} shortRuntimeSeed={shortRuntimeMovies} maxMinutes={120} />
+      </section>
 
       {data.map((rail) => (
         <section key={rail.title} className="space-y-4">

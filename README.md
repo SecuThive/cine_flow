@@ -13,12 +13,15 @@ Premium, cinematic movie discovery experience built with Next.js 14 App Router a
    ```bash
    npm install
    ```
-2. Copy the environment template and add your TMDB key:
+2. Copy the environment template and add your TMDB key (plus optional AI settings):
    ```bash
    cp .env.example .env.local
    ```
    ```env
    TMDB_API_KEY=your_tmdb_key
+   # Optional: connect any AI text endpoint that returns a narrative string
+   AI_RECOMMENDER_ENDPOINT=https://your-ai-endpoint.example.com/recommend
+   AI_API_KEY=your_ai_api_key
    ```
 3. Run the development server:
    ```bash
@@ -48,8 +51,10 @@ src/
   types/tmdb.ts
 ```
 
-## Styling Notes
+## Experience Highlights
 - Full-bleed hero with gradient overlays and action CTAs
+- AI-assisted **Mood Picker** that calls `/api/mood` and surfaces copy + TMDB matches
+- **Runtime Filter** widget targeting "Under 2 Hours" movie sessions
 - Horizontal rails with touch-friendly scrolling (`scrollbar-hide` utility)
 - Responsive 2:3 poster cards with hover-driven quick view
 
