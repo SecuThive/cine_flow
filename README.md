@@ -55,6 +55,7 @@ src/
 - Full-bleed hero with gradient overlays and action CTAs
 - AI-assisted **Mood Picker** that calls `/api/mood` and surfaces copy + TMDB matches
 - **Runtime Filter** widget targeting "Under 2 Hours" movie sessions
+- Streaming credibility boost with Netflix / Disney+ badges baked into every MovieCard
 - Horizontal rails with touch-friendly scrolling (`scrollbar-hide` utility)
 - Responsive 2:3 poster cards with hover-driven quick view
 

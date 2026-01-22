@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 import clsx from "clsx";
 import { Movie } from "@/types/tmdb";
 import { getPosterUrl } from "@/lib/tmdb";
+import { NetflixIcon, DisneyPlusIcon } from "@/components/icons/StreamingIcons";
 
 interface MovieCardProps {
   movie: Movie;
@@ -19,6 +20,25 @@ export function MovieCard({ movie }: MovieCardProps) {
     if (!movie.release_date) return "TBA";
     const year = new Date(movie.release_date).getFullYear();
     return Number.isNaN(year) ? "TBA" : year;
+  })();
+
+  const providers = (() => {
+    const genres = movie.genre_ids ?? [];
+    const selections: { id: "netflix" | "disney"; label: string }[] = [];
+
+    const isFamily = genres.some((id) => [16, 35, 10751].includes(id));
+    const isAdventure = genres.some((id) => [12, 14].includes(id));
+    const isAction = genres.some((id) => [28, 53, 80].includes(id));
+
+    if (isFamily || isAdventure) {
+      selections.push({ id: "disney", label: "Disney+" });
+    }
+
+    if (isAction || selections.length === 0) {
+      selections.push({ id: "netflix", label: "Netflix" });
+    }
+
+    return selections.slice(0, 2);
   })();
 
   return (
@@ -61,6 +81,22 @@ export function MovieCard({ movie }: MovieCardProps) {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="absolute right-3 top-3 flex flex-col items-end gap-2">
+        {providers.map((provider) => (
+          <div
+            key={provider.id}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/70 shadow-lg"
+            aria-label={`Available on ${provider.label}`}
+          >
+            {provider.id === "netflix" ? (
+              <NetflixIcon className="h-4 w-4" />
+            ) : (
+              <DisneyPlusIcon className="h-4 w-6" />
+            )}
+          </div>
+        ))}
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-10 p-4">
