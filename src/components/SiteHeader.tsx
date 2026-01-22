@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Search, Compass } from "lucide-react";
+import { Menu, X, Search, Compass, ShieldCheck } from "lucide-react";
 import { useState, useTransition } from "react";
 import { Movie } from "@/types/tmdb";
 import { getPosterUrl } from "@/lib/tmdb";
@@ -15,6 +15,12 @@ const navLinks = [
   { label: "Search", hash: "search" },
   { label: "Library", hash: "catalog" },
   { label: "Mood Lab", hash: "mood" },
+];
+
+const publishingStats = [
+  { label: "Projects Published", value: "5", detail: "Showcased today" },
+  { label: "Live Launches", value: "2", detail: "Streaming now" },
+  { label: "In Pipeline", value: "3", detail: "Curated pitches" },
 ];
 
 export function SiteHeader({ spotlight }: SiteHeaderProps) {
@@ -55,7 +61,7 @@ export function SiteHeader({ spotlight }: SiteHeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-neutral-950/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-gradient-to-b from-neutral-950 via-neutral-950/95 to-neutral-900/80 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-3">
           <Link href="/" className="text-xl font-semibold tracking-tight text-white">
@@ -83,12 +89,36 @@ export function SiteHeader({ spotlight }: SiteHeaderProps) {
           </Link>
           <button
             type="button"
-            className="inline-flex items-center rounded-full border border-white/15 bg-black/40 p-2 text-white transition hover:border-white md:hidden"
+            className="inline-flex items-center rounded-full border border-white/20 bg-black/40 p-2 text-white transition hover:border-white md:hidden"
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open menu"
           >
             <Menu className="h-5 w-5" />
           </button>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5 bg-black/20">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-4 text-neutral-50 md:px-6 md:flex-row md:items-center md:justify-between">
+          <div className="space-y-1">
+            <p className="text-xs uppercase tracking-[0.4em] text-neutral-400">Realtime publishing board</p>
+            <div className="flex flex-wrap items-center gap-2 text-sm text-neutral-300">
+              <ShieldCheck className="h-4 w-4 text-accent" />
+              <span>AdSense-friendly layout · Clear navigation · Family-safe catalog</span>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {publishingStats.map((stat) => (
+              <div
+                key={stat.label}
+                className="min-w-[140px] rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm"
+              >
+                <p className="text-2xl font-semibold text-white">{stat.value}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">{stat.label}</p>
+                <p className="text-xs text-neutral-400">{stat.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

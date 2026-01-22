@@ -4,6 +4,7 @@ import { MovieCard } from "@/components/MovieCard";
 import { RuntimeFilter } from "@/components/RuntimeFilter";
 import { SearchPanel } from "@/components/SearchPanel";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Footer } from "@/components/Footer";
 import { getMovies, getMoviesByRuntime } from "@/lib/tmdb";
 
 const rails: { title: string; category: "popular" | "top_rated" | "upcoming" }[] = [
@@ -73,6 +74,7 @@ export default async function HomePage() {
           </div>
         </section>
       </div>
+      <Footer />
     </main>
   );
 }

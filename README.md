@@ -57,6 +57,8 @@ src/
 - **Runtime Filter** widget targeting "Under 2 Hours" movie sessions
 - **Search Panel** hitting `/api/search` for TMDB-backed keyword discovery
 - Streaming credibility boost with Netflix / Disney+ badges baked into every MovieCard
+- Sticky **SiteHeader** with metrics, hamburger search drawer, and AdSense-safe layout cues
+- Compliance-ready **Footer** with policy links, contact info, and reserved ad surfaces
 - Horizontal rails with touch-friendly scrolling (`scrollbar-hide` utility)
 - Responsive 2:3 poster cards with hover-driven quick view
 
