@@ -53,7 +53,12 @@ export default async function HomePage() {
                 <p className="text-neutral-500">Connect your TMDB API key to populate this rail.</p>
               )}
               {rail.movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
+                <div
+                  key={movie.id}
+                  className="w-[75%] min-w-[200px] snap-center sm:w-auto sm:min-w-[200px] sm:max-w-[220px]"
+                >
+                  <MovieCard movie={movie} />
+                </div>
               ))}
             </div>
           </section>
