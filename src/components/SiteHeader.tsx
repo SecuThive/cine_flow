@@ -65,7 +65,7 @@ export function SiteHeader({ spotlight }: SiteHeaderProps) {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-3">
           <Link href="/" className="text-xl font-semibold tracking-tight text-white">
-            CineScout
+            Cine Flow
           </Link>
           <span className="hidden text-xs uppercase tracking-[0.4em] text-neutral-500 md:inline-flex">
             Premium Discovery
@@ -104,7 +104,7 @@ export function SiteHeader({ spotlight }: SiteHeaderProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.4em] text-neutral-500">Navigation</p>
-                <h3 className="text-xl font-semibold">Dive into CineScout</h3>
+                <h3 className="text-xl font-semibold">Dive into Cine Flow</h3>
               </div>
               <button
                 type="button"

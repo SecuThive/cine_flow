@@ -6,13 +6,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "CineScout | Premium Movie Discovery",
+  title: "Cine Flow | Premium Movie Discovery",
   description: "Discover cinematic gems, trending releases, and curated picks powered by TMDB.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
-    title: "CineScout",
+    title: "Cine Flow",
     description: "Immerse yourself in a premium streaming discovery experience.",
-    siteName: "CineScout",
+    siteName: "Cine Flow",
     type: "website",
   },
 };
