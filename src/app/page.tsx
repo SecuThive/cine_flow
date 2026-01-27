@@ -5,6 +5,7 @@ import { RuntimeFilter } from "@/components/RuntimeFilter";
 import { SearchPanel } from "@/components/SearchPanel";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Footer } from "@/components/Footer";
+import { NativeAdSlot } from "@/components/NativeAdSlot";
 import { getMovies, getMoviesByRuntime } from "@/lib/tmdb";
 
 const rails: { title: string; category: "popular" | "top_rated" | "upcoming" }[] = [
@@ -39,6 +40,8 @@ export default async function HomePage() {
         </section>
 
         <SearchPanel initialShowcase={browseGrid} />
+
+        <NativeAdSlot />
 
         {data.map((rail) => (
           <section key={rail.title} className="space-y-4">
